@@ -1,0 +1,12 @@
+[Unit]
+Description=VirtualBox Linux kernel module
+After=syslog.service
+
+[Service]
+ExecStart=/sbin/rcvboxdrv start
+ExecStop=/sbin/rcvboxdrv stop
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

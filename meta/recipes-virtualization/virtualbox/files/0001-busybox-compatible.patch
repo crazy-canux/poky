@@ -1,0 +1,24 @@
+diff -Naurp orig/vboxdrv.sh new/vboxdrv.sh
+--- orig/vboxdrv.sh	2020-06-11 02:56:08.992543837 -0700
++++ new/vboxdrv.sh	2020-06-11 02:56:27.092675375 -0700
+@@ -38,7 +38,7 @@ MODPROBE=/sbin/modprobe
+ SCRIPTNAME=vboxdrv.sh
+ 
+ # The below is GNU-specific.  See VBox.sh for the longer Solaris/OS X version.
+-TARGET=`readlink -e -- "${0}"` || exit 1
++TARGET=`readlink -f -- "${0}"` || exit 1
+ SCRIPT_DIR="${TARGET%/[!/]*}"
+ 
+ if $MODPROBE -c | grep -q '^allow_unsupported_modules  *0'; then
+diff -Naurp orig/VBox.sh new/VBox.sh
+--- orig/VBox.sh	2020-06-11 02:55:51.888419645 -0700
++++ new/VBox.sh	2020-06-11 02:56:37.136748432 -0700
+@@ -19,7 +19,7 @@ PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+ 
+ # The below is GNU-specific.  See slightly further down for a version which
+ # works on Solaris and OS X.
+-TARGET=`readlink -e -- "${0}"` || exit 1
++TARGET=`readlink -f -- "${0}"` || exit 1
+ MY_DIR="${TARGET%/[!/]*}"
+ 
+ # (
