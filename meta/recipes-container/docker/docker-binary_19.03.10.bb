@@ -14,6 +14,7 @@ SRC_URI += "file://docker.service"
 # Modified https://raw.githubusercontent.com/moby/moby/v19.03.10/contrib/init/systemd/docker.socket
 SRC_URI += "file://docker.socket"
 
+# Modified https://sonicgit.eng.sonicwall.com/soniccore/componentsx/soniccorex-layers/meta-virtualization/blob/MASTER/soniccorex/7.0.0/master/recipes-containers/containerd/files/containerd.service
 SRC_URI += "file://containerd.service"
 
 SRC_URI[md5sum] = "41e5083d1d8205b961546fe7d01344f1"
@@ -52,4 +53,7 @@ USERADD_PACKAGES = "${PN}"
 GROUPADD_PARAM_${PN} = "-f -r docker"
 
 SYSTEMD_SERVICE_${PN} = "docker.service"
-SYSTEMD_SERVICE_${PN} = "containerd.service"
+SYSTEMD_AUTO_ENABLE_${PN} = "enable"
+
+SYSTEMD_SERVICE_${PN}_containerd = "containerd.service"
+SYSTEMD_AUTO_ENABLE_${PN}_containerd = "enable"
