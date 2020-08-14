@@ -52,8 +52,6 @@ FILES_${PN} += "${systemd_unitdir}/system/containerd.service"
 USERADD_PACKAGES = "${PN}"
 GROUPADD_PARAM_${PN} = "-f -r docker"
 
-SYSTEMD_SERVICE_${PN} = "docker.service"
+SYSTEMD_SERVICE_${PN} = "docker.service docker.socket containerd.service"
 SYSTEMD_AUTO_ENABLE_${PN} = "enable"
 
-SYSTEMD_SERVICE_${PN}_containerd = "containerd.service"
-SYSTEMD_AUTO_ENABLE_${PN}_containerd = "enable"
