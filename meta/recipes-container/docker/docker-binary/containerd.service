@@ -4,8 +4,15 @@ Documentation=https://containerd.tools
 After=network.target
 
 [Service]
+ExecStartPre=-/sbin/modprobe overlay
 ExecStart=/usr/bin/containerd
 Delegate=yes
+KillMode=process
+LimitNOFILE=1048576
+LimitNPROC=infinity
+LimitCORE=infinity
+TasksMax=infinity
+
 
 [Install]
 WantedBy=multi-user.target
